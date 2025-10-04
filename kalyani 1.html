@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Foodie - Food Delivery</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      line-height: 1.6;
+      background: #fff;
+      color: #333;
+    }
+
+    /* Navbar */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 15px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: transparent;
+      transition: 0.3s;
+      z-index: 1000;
+    }
+
+    nav.scrolled {
+      background: #ff4757;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    nav .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+
+    nav ul li {
+      margin-left: 20px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #ffeaa7;
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      background: url('https://t3.ftcdn.net/jpg/02/97/67/70/360_F_297677001_zX7ZzRq8DObUV5IWTHAIhAae6DuiEQh4.jpg') center/cover no-repeat;
+      display:flex;     
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      color: white;
+      padding: 0 20px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      background: #ff4757;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #e84118;
+    }
+
+    /* Menu Section */
+    .menu {
+      padding: 80px 50px;
+      text-align: center;
+    }
+
+    .menu h2 {
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      color: #ff4757;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .menu-item {
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: 0.3s;
+    }
+
+    .menu-item:hover {
+      transform: translateY(-10px);
+    }
+
+    .menu-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .menu-item h3 {
+      margin: 15px 0;
+      font-size: 1.4rem;
+      color: #333;
+    }
+
+    .menu-item p {
+      padding: 0 15px 20px;
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    /* About Section */
+    .about {
+      padding: 80px 50px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .about img {
+      flex: 1 1 400px;
+      max-width: 100%;
+      border-radius: 15px;
+    }
+
+    .about-text {
+      flex: 1 1 400px;
+    }
+
+    .about-text h2 {
+      font-size: 2rem;
+      color: #ff4757;
+      margin-bottom: 20px;
+    }
+
+    .about-text p {
+      font-size: 1rem;
+      color: #444;
+      line-height: 1.7;
+    }
+
+    /* Contact Section */
+    .contact {
+      padding: 80px 50px;
+      background: #f8f8f8;
+      text-align: center;
+    }
+
+    .contact h2 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      color: #ff4757;
+    }
+
+    .contact form {
+      max-width: 600px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .contact input, .contact textarea {
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      outline: none;
+    }
+
+    .contact button {
+      padding: 12px;
+      background: #ff4757;
+      border: none;
+      border-radius: 30px;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .contact button:hover {
+      background: #e84118;
+    }
+
+    /* Footer */
+    footer {
+      padding: 20px;
+      text-align: center;
+      background: #222;
+      color: #fff;
+      margin-top: 20px;
+    }
+
+    /* Responsive */
+    @media(max-width:768px) {
+      nav {
+        padding: 15px 20px;
+      }
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .about {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- Navbar -->
+  <nav id="navbar">
+    <div class="logo">Foodie</div>
+    <ul>
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <h1>Delicious Food Delivered To You</h1>
+    <p>Order your favorite meals anytime, anywhere!</p>
+    <a href="#menu" class="btn">Order Now</a>
+  </section>
+
+  <!-- Menu Section -->
+  <section class="menu" id="menu">
+    <h2>Our Menu</h2>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <img src="https://cdn.britannica.com/08/177308-050-94D9D6BE/Food-Pizza-Basil-Tomato.jpg" alt="Pizza">
+        <h2>Pizza</h2>
+        <p>Cheesy delight with fresh toppings straight from the oven.</p>
+      </div>
+      <div class="menu-item">
+        <img src="https://static.wixstatic.com/media/d7dc5a_ce1d53037dc34cd8b3bee072746c8054~mv2.jpg/v1/fill/w_692,h_692,fp_0.50_0.50,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Double%20chicken%20Cheese%20Burger.jpg" alt="Burger">
+        <h2>Burger</h2>
+        <p>Juicy burgers stacked with fresh veggies and sauces.</p>
+      </div>
+      <div class="menu-item">
+        <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=800&q=80" alt="Pasta">
+        <h2>Pasta</h2>
+        <p>Classic Italian pasta with creamy sauces and herbs.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about" id="about">
+    <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=800&q=80" alt="Restaurant">
+    <div class="about-text">
+      <h2>About Us</h2>
+      <p>
+        At Foodie, we believe food is not just a meal—it’s an experience! 
+        We deliver freshly prepared, high-quality dishes right to your doorstep.
+        Our mission is to make your dining simple, fast, and delightful.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact" id="contact">
+    <h2>Contact Us</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea rows="5" placeholder="Your Message"></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Foodie | Designed with ❤ by You</p>
+  </footer>
+
+  <!-- JS for navbar scroll effect -->
+  <script>
+    const navbar = document.getElementById("navbar");
+    window.addEventListener("scroll", () => {
+      if(window.scrollY > 50){
+        navbar.classList.add("scrolled");
+      } else {
+        navbar.classList.remove("scrolled");
+      }
+    });
+  </script>
+
+</body>
+</html>
